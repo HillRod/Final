@@ -9,7 +9,7 @@
       android:key="nombreTexto"
       android:title="Nombre"
       android:summary="Almacena el texto como nombre"
-      android:defaultValue="No tiene nombre">
+      android:defaultValue="admin">
   </EditTextPreference>
 
         <!-- Contraseña/ Password-->
@@ -17,7 +17,7 @@
         android:key="passTexto"
         android:title="Contraseña"
         android:summary="Almacena el texto"
-        android:defaultValue="No tiene nombre">
+        android:defaultValue="admin">
     </EditTextPreference>
 
 

@@ -2,7 +2,9 @@ package com.example.abraham.afinal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.content.SharedPreferences;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,19 +23,35 @@ public class MainActivity extends AppCompatActivity {
     private EditText etNombre, etPass;  //
     private Button btnEntrar,btnRegistro;
     Context contexto;
+    //getToken a;
     UserSessionManager session;
+    PreferenciasFragment xd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        session = new UserSessionManager(getApplicationContext());
+        if(session.isUserLoggedIn()==true){
+            Intent i = new Intent(getApplicationContext(), SignedIn.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            // Add new Flag to start new Activity
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
         btnEntrar = findViewById(R.id.btnEntrar);
         btnRegistro = findViewById(R.id.btnRegistro);
         contexto=this;
-        session = new UserSessionManager(getApplicationContext());
+        final SharedPreferences shaPref = PreferenceManager.getDefaultSharedPreferences(contexto);
+        //a.onTokenRefresh();
+
         //Añadir elementos layout
         addView(); /// Lo primero siempre dentro del ONCREATE DEBE DE SER AÑADIR LAS VISTAS
         comprobarPreferencas();
+        Toast.makeText(getApplicationContext(),
+                "User Login Status: " + session.isUserLoggedIn(),
+                Toast.LENGTH_LONG).show();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {  /// Cuando se de click se valida nombre  y contraseña
             @Override
@@ -44,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 String password=etPass.getText().toString();
 
                 ///Se validan  el nombre y la contraseña
-                if(validarStrings(nombre)  && validarStrings(password)){
+                /*if(validarStrings(nombre)  && validarStrings(password)){
                     //  Modificar preferencias
                     PreferenciasFragment.setString(contexto, PreferenciasFragment.getKey_nombre(), nombre);
                     PreferenciasFragment.setString(contexto, PreferenciasFragment.getKey_pass(), password);
@@ -53,25 +71,24 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     //Toast.makeText(getApplicationContext(), "Datos incorrectos", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
                 String username = etNombre.getText().toString();
                 String pass = etPass.getText().toString();
-
+                //Toast.makeText(getApplicationContext(), , Toast.LENGTH_SHORT).show();
 
                 // Validate if username, password is filled
                 if(username.trim().length() > 0 && password.trim().length() > 0){
 
                     // For testing puspose username, password is checked with static data
                     // username = admin
-                    // password = admin
-
-                    if(username.equals("admin") && pass.equals("admin")){
+                    // password = admin  PreferenciasFragment.getKey_nombre();
+                    if(username.equals(shaPref.getString("nombreTexto","")) && pass.equals(shaPref.getString("passTexto",""))){
 
                         // Creating user login session
                         // Statically storing name="Android Example"
                         // and email="androidexample84@gmail.com"
-                        session.createUserLoginSession("User Session ", "bamoyk@yahoo.com");
+                        session.createUserLoginSession("User Session ", shaPref.getString("nombreTexto",""));
 
                         // Starting MainActivity
                         Intent i = new Intent(getApplicationContext(), SignedIn.class);
@@ -81,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
 
-                        //finish();
+                        finish();
 
                     }else{
 
