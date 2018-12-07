@@ -22,7 +22,7 @@ public class SignedIn extends AppCompatActivity {
         session = new UserSessionManager(getApplicationContext());
 
         // Button logout
-        btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnLogout);
 
         if(session.checkLogin())
             finish();
@@ -42,4 +42,5 @@ public class SignedIn extends AppCompatActivity {
         });
 
     }
+
 }
