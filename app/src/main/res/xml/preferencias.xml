@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <!-- NOMBRE-->
+    <PreferenceCategory android:title="Datos Usuario">
+  <EditTextPreference
+      android:key="nombreTexto"
+      android:title="Nombre"
+      android:summary="Almacena el texto como nombre"
+      android:defaultValue="No tiene nombre">
+  </EditTextPreference>
+
+        <!-- Contraseña/ Password-->
+    <EditTextPreference
+        android:key="passTexto"
+        android:title="Contraseña"
+        android:summary="Almacena el texto"
+        android:defaultValue="No tiene nombre">
+    </EditTextPreference>
+
+
+
+     <CheckBoxPreference
+         android:key="recordarNombre"
+         android:title="Recordar nombre">
+     </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:key="recordarPass"
+            android:title="Recordar contraseña">
+        </CheckBoxPreference>
+
+</PreferenceCategory>
+
+    <PreferenceCategory android:title="Idiomas"> <!--Agrupación-->
+        <ListPreference
+            android:key="listaIdiomas"
+            android:title="Selecionar idioma"
+            android:entries="@array/idiomas"
+            android:entryValues="@array/valores_idiomas"
+            android:defaultValue="3"
+            ></ListPreference>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

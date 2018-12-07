@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Final</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="idiomas">
+        <item>Ingles</item>
+        <item>Fraces</item>
+        <item>Italiano</item>
+        <item>Español</item>
+    </string-array>
+
+    <string-array name="valores_idiomas">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+</resources>
+
