@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //Añadir elementos layout
         addView(); /// Lo primero siempre dentro del ONCREATE DEBE DE SER AÑADIR LAS VISTAS
         comprobarPreferencas();
-        Toast.makeText(getApplicationContext(),
-                "User Login Status: " + session.isUserLoggedIn(),
-                Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"User Login Status: " + session.isUserLoggedIn(),Toast.LENGTH_LONG).show();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {  /// Cuando se de click se valida nombre  y contraseña
             @Override
