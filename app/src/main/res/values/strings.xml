@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Final</string>
+
     <string name="action_settings">Settings</string>
 
     <string-array name="idiomas">
@@ -15,6 +15,10 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+    <string name="app_name">Proyecto Final</string>
+    <string name="login">Ingresar</string>
+    <string name="registrarse">Registrarme</string>
 
 </resources>
 

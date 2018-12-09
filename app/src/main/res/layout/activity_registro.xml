@@ -1,42 +1,65 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Negro"
+    android:orientation="vertical"
+    tools:context=".Registro">
 
-    <!-- Titulo-->
+
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/usuario"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Nombre de usuario"
-        android:singleLine="true"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/Gris2"
+        android:ems="10"
+        android:hint="Correo"
+        android:textColorHint="@color/Gris3"
+        android:textSize="22dp"
+        android:textColor="@color/Gris3"
+        android:inputType="textWebEmailAddress"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/pass"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Contraseña"
-        android:minLines="1"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:layout_below="@+id/usuario"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/Gris2"
+        android:ems="10"
+        android:hint="Clave"
+        android:textColorHint="@color/Gris3"
+        android:textSize="22dp"
+        android:textColor="@color/Gris3"
+        android:inputType="textPassword"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/uptudate"
-        android:layout_below="@+id/pass"
-        android:text="Aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:text="Registrarme"
+        android:textColor="@color/Blanco"
+        android:textSize="22dp"
         />
 
+    <Button
+        android:id="@+id/log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/Negro"
+        android:ems="10"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/Blanco"
+        android:textSize="22dp" />
 
-</RelativeLayout>
+</LinearLayout>

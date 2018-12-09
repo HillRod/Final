@@ -23,15 +23,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class Registro extends AppCompatActivity {
 
+
     Button btnAceptar;
-    EditText Username,Pass;
+    Button btnLog;
+    EditText Username, Pass;
     RequestQueue colaSolicitud;
 
     getToken tok = new getToken();
     Intent a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,17 +45,18 @@ public class Registro extends AppCompatActivity {
         btnAceptar = findViewById(R.id.uptudate);
         Username = findViewById(R.id.usuario);
         Pass = findViewById(R.id.pass);
+        btnLog = findViewById(R.id.log);
 
-        a = new Intent(this,MainActivity.class);
+        a = new Intent(this, MainActivity.class);
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombre=Username.getText().toString();
-                String password=Pass.getText().toString();
+                String nombre = Username.getText().toString();
+                String password = Pass.getText().toString();
 
-                if(validarStrings(nombre)  && validarStrings(password)){
+                if (validarStrings(nombre) && validarStrings(password)) {
 
-                    agregarUsuario(nombre,password,tok.get());
+                    agregarUsuario(nombre, password, tok.get());
                     //  Modificar preferencias
                     PreferenciasFragment.setString(getApplicationContext(), PreferenciasFragment.getKey_nombre(), nombre);
                     PreferenciasFragment.setString(getApplicationContext(), PreferenciasFragment.getKey_pass(), password);
@@ -60,32 +66,35 @@ public class Registro extends AppCompatActivity {
                     startActivity(a);
                     Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
 
-                }else{
+                } else {
                     //Toast.makeText(getApplicationContext(), "Datos incorrectos", Toast.LENGTH_SHORT).show();
                 }
 
 
-
-
-
             }
         });
-
+        btnLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(a);
+            }
+        });
     }
-    Boolean validarStrings (String texto){
+
+    Boolean validarStrings(String texto) {
 
         /// Como una validación simple
         /// Si el Texto es diferente de NULL
         ///Y quitandole los espacios espacios su longitud es Mayor  a cero
-        return texto!=null && texto.trim().length()>0;
+        return texto != null && texto.trim().length() > 0;
 
         //Devuelve verdadero si eso se cumple
 
     }
 
-    public void agregarUsuario(String nombre,String password,String token){
+    public void agregarUsuario(String nombre, String password, String token) {
 
-        String URL = "http://192.168.1.78/WS/addUsuario.php?username="+nombre+"&pass="+password+"&token="+token;
+        String URL = "http://192.168.43.238/WS/addUsuario.php?username=" + nombre + "&pass=" + password + "&token=" + token;
         JsonObjectRequest getSolicitudUsuario = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
@@ -97,23 +106,25 @@ public class Registro extends AppCompatActivity {
                         try {
                             int estado = respuestaUsuario.getInt("estado");
                             String mensaje = respuestaUsuario.getString("mensaje");
-                            if(estado==1) {
-                                Toast.makeText(getApplicationContext(),"Se agrego correctamente",Toast.LENGTH_SHORT).show();
-                            } else{
-                                Toast.makeText(getApplicationContext(),"No se agrego",Toast.LENGTH_LONG).show();
+                            if (estado == 1) {
+                                Toast.makeText(getApplicationContext(), "Se agrego correctamente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No se agrego", Toast.LENGTH_LONG).show();
                             }
-                        } catch (JSONException e){
-                            Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new com.android.volley.Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),"ERROR: "+error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "ERROR: " + error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
         );
         colaSolicitud.add(getSolicitudUsuario);
     }
+
+
 }

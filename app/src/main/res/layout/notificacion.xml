@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/icon"
+        />
+    <TextView
+        android:id="@+id/asunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:paddingLeft="5dp"
+        android:text="Asunto"
+        android:textSize="32sp"
+        />
+    <TextView
+        android:id="@+id/mensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/asunto"
+        android:layout_below="@+id/asunto"
+        android:paddingLeft="5dp"
+        android:text="Mensaje"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/fecha-hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="5dp"
+        android:text="12/03/18 - 10:00 a.m."
+        android:textSize="11sp"/>
+
+</RelativeLayout>

@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     Context contexto;
     //getToken a;
     UserSessionManager session;
-    PreferenciasFragment xd;
+    getToken A;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        A = new getToken();
+        A.onTokenRefresh();
         session = new UserSessionManager(getApplicationContext());
         if(session.isUserLoggedIn()==true){
             Intent i = new Intent(getApplicationContext(), SignedIn.class);
